@@ -1,57 +1,104 @@
-# risico-taxatie-app
+# Read Me - Risicotaxatie app
+#### Jesse Dijkman
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+## Proces
+### Maandag (8-10-18)
+Introductie, geen werk
 
-## Prerequisites
+---
 
-You will need the following things properly installed on your computer.
+### Dinsdag (9-10-18)
+3 presentaties over de frameworks: React, Angular en Vue.
+Onderzoek verricht naar frameworks om een keuze te maken van welke ik uiteindelijk ga gebruiken om de opdracht te maken.
+De onderzochte frameworks waren:
+- Vue.js
+- React.js
+- Polymer.js
+- Ember.js
+- Aurelia.js
+- Meteor.js
 
-* [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with npm)
-* [Ember CLI](https://ember-cli.com/)
-* [Google Chrome](https://google.com/chrome/)
+Van een aantal frameworks had ik een aantal pros and cons verzameld, die zijn als volgt:
 
-## Installation
+#### ReactJS:
 
-* `git clone <repository-url>` this repository
-* `cd risico-taxatie-app`
-* `npm install`
+**Pros:**
+- Realtime updating (Via the Virtual DOM), it’s quick
+- Components
+- Downward data binding?
+- Open-source Facebook library
 
-## Running / Development
+**Cons:**
+- High speed development
+- Poor documentation
+- Steep learning curve?
 
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-* Visit your tests at [http://localhost:4200/tests](http://localhost:4200/tests).
+---
 
-### Code Generators
+#### VueJS:
 
-Make use of the many generators for code, try `ember help generate` for more details
+**Pros:**
+- Small (and fast) size (18kb)
+- For single-page and complex applications
+- Easy to learn?
+- Easy to read
 
-### Running Tests
+**Cons:**
+- Lack of plugins (because of the age)
+- Evolving fast
 
-* `ember test`
-* `ember test --server`
+---
 
-### Linting
+#### MeteorJS:
 
-* `npm run lint:hbs`
-* `npm run lint:js`
-* `npm run lint:js -- --fix`
+**Pros:**
+- Simplicity
+- Lots of packages and libraries
+- Seamless Cient-server communication …
 
-### Building
+**Cons:**
+- Full stack …
 
-* `ember build` (development)
-* `ember build --environment production` (production)
+Uit het onderzoek kwam er een top 3 naar voren:
+1. Vue.js
+2. React.js
+3. Meteor.js
 
-### Deploying
+**Bronnen:**
+- https://www.altexsoft.com/blog/engineering/the-good-and-the-bad-of-reactjs-and-react-native/
+- https://javascriptreport.com/the-ultimate-guide-to-javascript-frameworks/#aurelia
+- https://raygun.com/blog/popular-javascript-frameworks/
+- https://www.meteor.com/
+- https://www.quora.com/Can-you-tell-me-the-pros-cons-of-using-Meteor-to-develop-a-web-application
+- http://www.binariks.com/blog/tips/10-pros-cons-meteor-js-development/
+- https://www.quora.com/What-are-the-pros-and-cons-of-using-Polymer-for-front-end-development
+- http://www.olsondigital.com/blog/code/react-vs-polymer
+- https://hackernoon.com/5-best-javascript-frameworks-in-2017-7a63b3870282
 
-Specify what it takes to deploy your app.
+---
 
-## Further Reading / Useful Links
+### Woensdag (10-10-18)
+In de ochtend hadden we een presentatie van Arjan. Na de presentatie gingen we
+ons bezig houden met de gekozen framework (Ember.js).
+Ik heb een aantal tutorials bekeken op Youtube
+- (Traversy Media)[https://www.youtube.com/watch?v=owDmPTSJkrg]
+- (
+Kyle Robinson Young
+)[https://www.youtube.com/watch?v=53OpEYA4zPQ&t=77s]
 
-* [ember.js](https://emberjs.com/)
-* [ember-cli](https://ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+Na het bekijken van de tutorials heb ik Ember-CLI geinstalleerd en ben ik een beetje gaan uitproberen met behulp van de (quick start)[https://guides.emberjs.com/release/getting-started/quick-start/].
+
+### Donderdag (11-10-18)
+**Doel:**
+- Ember uitproberen, het leren kennen.
+In het begin van de dag heb ik een (tutorial)[https://guides.emberjs.com/release/tutorial/ember-cli/] gevolgd/gemaakt. Na de tutorial ben ik ember een beetje gaan uitproberen met test projectjes.
+
+
+### Vrijdag (12-10-18)
+**Doel:**
+- Goede en slechte punten van de kind veilig thuis website opschrijven,
+- De layout een beetje duidelijk maken voor mijzelf (geen details, alleen grote blokken),
+- RisicoTaxatieApp project aanmaken en een begin maken
+
+Heb in het begin het project aangemaakt (RisicoTaxatieApp), en daarna de kind veilig thuis website bekeken en aantekeningen gemaakt plus een paar schetjes (van de layout).
+Ben daarna begonnen met de html en css. Heb geprobeerd om javascript te gebruiken (DOM manipulatie), met weinig succes.

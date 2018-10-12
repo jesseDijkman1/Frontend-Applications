@@ -1,0 +1,50 @@
+#main-nav {
+  background-color: #367fa9;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  width: 100vw;
+}
+
+#main-nav span {
+  font-weight: bold;
+  font-size: 1.25rem;
+  color: #FFF;
+  min-width: 13rem;
+  text-align: center;
+
+}
+
+#main-nav ul {
+  display: flex;
+  background-color: #222d32;
+  height: 100%;
+  width: 100%;
+}
+
+#main-nav ul li {
+  list-style-type: none;
+  line-height: 3rem;
+  margin-left: 5rem;
+  position: relative;
+}
+
+#main-nav ul li:hover::after {
+  content: '';
+  display: block;
+  height: .25rem;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  background-color: #3c8dbc;
+  animation-name: taller;
+  animation-duration: .2s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes taller {
+  from {
+    height: 0;
+  }
+}

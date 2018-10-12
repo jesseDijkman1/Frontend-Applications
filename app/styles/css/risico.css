@@ -1,0 +1,53 @@
+#risk {
+  width: 100vw;
+  height: calc(100vh - 3rem);
+  padding: 2rem 0;
+  display: grid;
+  background-color: red;
+  grid-template-columns: 13rem repeat(4, 1fr) 13rem;
+  grid-template-rows: 8rem auto;
+  grid-row-gap: 2rem;
+}
+
+#risk > aside {
+  background-color: #e6e6e6;
+  grid-row: 1 / 3;
+  grid-column: 2 / 3;
+  display: grid;
+  grid-template-rows: repeat(5, 1fr);
+}
+
+#risk > aside > section:first-child {
+  background-color: #222d32;
+  grid-row: 1 / 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem;
+  color: #FFF;
+}
+
+#risk > aside > section:first-child h1 {
+  font-size: 4rem;
+  align-self: center;
+  width: 100%;
+}
+
+#risk > aside > section:last-child {}
+#risk > aside > section:last-child ol {}
+#risk > aside > section:last-child ol li {
+  list-style-type: none;
+}
+
+#color-indicator {
+  height: 20%;
+  background-color: yellow;
+}
+
+
+
+#risk-forms {
+  background-color: lightgrey;
+  grid-row: 1 / 3;
+  grid-column: 3 / 6;
+}

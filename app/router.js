@@ -7,6 +7,9 @@ const Router = EmberRouter.extend({
 });
 
 Router.map(function() {
+  this.route('risico');
+  this.route('over');
+  this.route('contact');
 });
 
 export default Router;
