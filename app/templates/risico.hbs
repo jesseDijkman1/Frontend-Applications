@@ -13,6 +13,23 @@
     </section>
   </aside>
   <main id="risk-forms">
+    <section class="form" id="kind">
+      <h1>Kind</h1>
+      <div>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      {{#each model as |vraag|}}
+      <p>{{vraag.vraag}}</p>
+      {{/each}}
 
+    </section>
+    {{!-- <section class="form" id="ouders"></section>
+    <section class="form" id="vader"></section>
+    <section class="form" id="moeder"></section>
+    <section class="form" id="overig"></section> --}}
   </main>
 </div>
