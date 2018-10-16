@@ -1,4 +1,4 @@
-<div id="risk" class="grid-wrapper">
+<div id="risk" class="grid-wrapper cat_1">
   <aside>
     <section>
       <h1>NR</h1>
@@ -12,24 +12,68 @@
       </ol>
     </section>
   </aside>
-  <main id="risk-forms">
-    <section class="form" id="kind">
+  <header id="risk-nav">
+    <div>
       <h1>Kind</h1>
-      <div>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      {{#each model as |vraag|}}
-      <p>{{vraag.vraag}}</p>
-      {{/each}}
-
-    </section>
-    {{!-- <section class="form" id="ouders"></section>
-    <section class="form" id="vader"></section>
-    <section class="form" id="moeder"></section>
-    <section class="form" id="overig"></section> --}}
+      <h1>Ouders</h1>
+      <h1>Vader</h1>
+      <h1>Moeder</h1>
+      <h1>Overig</h1>
+    </div>
+    <div>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <button id="next" type="button" name="button">&#62;</button>
+    <button id="back" type="button" name="button">&#60;</button>
+  </header>
+  <main id="risk-forms">
+    {{risico-formulier object=model.kind categorie="kind"}}
+    {{risico-formulier object=model.ouders categorie="ouders"}}
+    {{risico-formulier object=model.vader categorie="vader"}}
+    {{risico-formulier object=model.moeder categorie="moeder"}}
+    {{risico-formulier object=model.overig categorie="overig"}}
   </main>
 </div>
+
+<script type="text/javascript">
+  let risk = document.getElementById('risk');
+  let next = document.getElementById('next');
+  let back = document.getElementById('back');
+  // Niet zo trots hierop ...
+  next.addEventListener('click', () => {
+    if (risk.classList.contains('cat_1')) {
+      risk.classList.add('cat_2');
+      risk.classList.remove('cat_1');
+    } else if (risk.classList.contains('cat_2')) {
+      risk.classList.add('cat_3');
+      risk.classList.remove('cat_2');
+    } else if (risk.classList.contains('cat_3')) {
+      risk.classList.add('cat_4');
+      risk.classList.remove('cat_3');
+    } else if (risk.classList.contains('cat_4')) {
+      risk.classList.add('cat_5');
+      risk.classList.remove('cat_4');
+    }
+  })
+
+  back.addEventListener('click', () => {
+    if (risk.classList.contains('cat_5')) {
+      risk.classList.add('cat_4');
+      risk.classList.remove('cat_5');
+    } else if (risk.classList.contains('cat_4')) {
+      risk.classList.add('cat_3');
+      risk.classList.remove('cat_4');
+    } else if (risk.classList.contains('cat_3')) {
+      risk.classList.add('cat_2');
+      risk.classList.remove('cat_3');
+    } else if (risk.classList.contains('cat_2')) {
+      risk.classList.add('cat_1');
+      risk.classList.remove('cat_2');
+    }
+  })
+
+</script>

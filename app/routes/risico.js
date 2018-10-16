@@ -341,12 +341,21 @@ export default Route.extend({
       }
     ]
 
+    // const rx = new RegExp('kind|ouders|vader|moeder'); Werkt niet
+
+    let categorieen = {
+      kind: [],
+      ouders: [],
+      vader: [],
+      moeder: [],
+      overig: []
+    }
     let vragen = [];
-    let categorieen = [];
+    let checkCat = [];
 
     for (let i = 0; i < data.length; i++) {
-      if (!categorieen.includes(data[i].Categorie)) {
-        categorieen.push(data[i].Categorie)
+      if (!checkCat.includes(data[i].Categorie)) {
+        checkCat.push(data[i].Categorie)
         vragen.push({
           vraag: data[i].Categorie,
           antwoorden: [data[i].Name]
@@ -359,6 +368,33 @@ export default Route.extend({
         })
       }
     }
-    return vragen;
+    // return vragen;
+    vragen.forEach((vraag) => {
+      let cats = ['kind','ouders','vader','moeder'];
+      let words = vraag.vraag.toLowerCase().split(' ');
+
+      if (words.includes('kind') || ['Geslacht', 'Soort onderwijs', 'Slachtoffer', 'Voortijdig schoolverlaten', 'Halt delict', 'Verandering onderwijs niveau', 'Actueel onderwijs niveau'].includes(vraag.vraag)) {
+        categorieen.kind.push(vraag);
+      }
+      else if (words.includes('ouders') || vraag.vraag == 'Herkomst') {
+        categorieen.ouders.push(vraag);
+      }
+      else if (words.includes('vader')) {
+        if (words.includes('moeder')) {
+          categorieen.ouders.push(vraag);
+        } else {
+          categorieen.vader.push(vraag);
+        }
+
+      }
+      else if (words.includes('moeder')) {
+        categorieen.moeder.push(vraag);
+      }
+      else {
+        categorieen.overig.push(vraag);
+      }
+
+    })
+    return categorieen;
   }
 });

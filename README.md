@@ -102,3 +102,16 @@ In het begin van de dag heb ik een (tutorial)[https://guides.emberjs.com/release
 
 Heb in het begin het project aangemaakt (RisicoTaxatieApp), en daarna de kind veilig thuis website bekeken en aantekeningen gemaakt plus een paar schetjes (van de layout).
 Ben daarna begonnen met de html en css. Heb geprobeerd om javascript te gebruiken (DOM manipulatie), met weinig succes.
+
+
+### Maandag (15-10-18)
+**Doel:**
+- JSON file verwerken in het prototype
+
+In de ochtend kwamen er 3 jeugdwerkers op bezoek om vragen te beantwoorden en wat te vertellen over hun werk. In de middag heb ik het JSON bestand verwerkt en in de avond heb ik de code geschreven om het te sorteren op vraag.
+
+### Dinsdag (16-10-18)
+**Doel:**
+- De date uit de JSON file omzetten naar inputs
+
+Ik heb de data kunnen omzetten en categoriseren in mijn eigen categorieen. Heb ook de vormgeving zo goed als af gemaakt. De gebruiker kan door de vragenlijst heen klikken met een aantal animaties.

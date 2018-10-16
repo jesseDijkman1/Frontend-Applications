@@ -3,15 +3,16 @@
   height: calc(100vh - 3rem);
   padding: 2rem 0;
   display: grid;
-  background-color: red;
+  background-color: #f7f7f7;
   grid-template-columns: 13rem repeat(4, 1fr) 13rem;
-  grid-template-rows: 8rem auto;
-  grid-row-gap: 2rem;
+  grid-template-rows: 8rem auto 5rem;
+  grid-template-rows: repeat(5, 1fr);
+  /* grid-row-gap: 2rem; */
 }
 
 #risk > aside {
   background-color: #e6e6e6;
-  grid-row: 1 / 3;
+  grid-row: 1 / 6;
   grid-column: 2 / 3;
   display: grid;
   grid-template-rows: repeat(5, 1fr);
@@ -76,35 +77,205 @@
   background-color: yellow;
 }
 
-#risk-forms {
-  background-color: lightgrey;
-  grid-row: 1 / 3;
+#risk-nav {
+  grid-row: 1 / 2;
   grid-column: 3 / 6;
-  padding: 1rem;
+  background-color: #222d32;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2rem;
 }
 
-#risk-forms .form {
+#risk-nav > div:first-of-type {
+  display: grid;
+  border-left: solid 2px rgba(255,255,255,.2);
+  grid-template-columns: repeat(5, 100%);
+  height: 100%;
+  width: 100%;
+  transition: left .4s ease-in-out;
+  position: absolute;
+}
+
+#risk-nav > div:last-of-type {
+  width: 50%;
+  height: .5rem;
+  align-self: flex-end;
+  display: flex;
+  justify-content: space-between;
+}
+
+#risk-nav > div:last-of-type span {
+  width: calc(100% / 5 - .2rem);
+  height: 100%;
+  background-color: rgba(255,255,255,.5);
+  transition: background-color .3s ease;
+}
+
+#risk-nav > div:first-of-type h1 {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 2.5rem;
+  color: #FFF;
+}
+
+#risk-nav > button {
+  position: absolute;
+  background-color: #367fa9;
+  transition: background-color .2s ease;
+  color: #FFF;
+  border: none;
+
+  height: 100%;
+  padding: 1rem;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+#next {
+  top: 0;
+  right: 0;
+}
+
+#back {
+  top: 0;
+  left: 0;
+}
+
+#risk-nav > button:hover {
+  cursor: pointer;
+  background: #3c8dbc;
+}
+
+#risk-forms {
+  background-color: lightgrey;
+  grid-row: 2 / 6;
+  grid-column: 3 / 6;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  display: grid;
+  grid-template-columns: repeat(5, 100%);
+  grid-gap: 2rem;
+  position: relative;
+}
+
+#risk-forms .categorie {
+  position: absolute;
+  width: 100%;
+  transition: left .3s ease-in-out;
+}
+
+#risk-forms .categorie h1 {
+  top: 0;
   text-align: center;
 }
 
-#risk-forms .form h1 {
+#risk-forms .categorie .vraag {
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+#risk-forms .categorie .vraag:nth-of-type(even) {
+  background-color: rgba(0,0,0,.1);
+}
+
+#risk-forms .categorie .vraag div {
+  display: flex;
+  align-items: center;
+}
+
+#risk-forms .categorie .vraag label {
+  font-weight: bold;
+  width: 100%;
   margin-bottom: .5rem;
 }
 
-#risk-forms .form > div:first-of-type {
-  display: flex;
-  margin: 0 auto;
-  justify-content: center;
+#risk-forms .categorie .vraag input {
+  margin-right: 1rem;
 }
 
-#risk-forms .form > div:first-of-type span {
-  width: 4rem;
-  height: .5rem;
-  margin-left: .25rem;
-  background-color: rgba(0,0,0,.2);
+#risk-forms .categorie .vraag p {
+  margin-right: 1rem;
+  padding-right: 1rem;
+  border-right: solid 1px black;
+}
+#risk-forms .categorie .vraag p:last-of-type {
+  border: none;
 }
 
-#risk-forms .form > div:first-of-type span:first-of-type {
-  margin-left: 0;
+.cat_1 #risk-nav > div:last-of-type span:nth-of-type(1),
+.cat_2 #risk-nav > div:last-of-type span:nth-of-type(2),
+.cat_3 #risk-nav > div:last-of-type span:nth-of-type(3),
+.cat_4 #risk-nav > div:last-of-type span:nth-of-type(4),
+.cat_5 #risk-nav > div:last-of-type span:nth-of-type(5) {
+  background-color: #FFF;
+}
+
+.cat_2 #risk-nav > div:last-of-type span:nth-of-type(1),
+.cat_3 #risk-nav > div:last-of-type span:nth-of-type(-n + 2),
+.cat_4 #risk-nav > div:last-of-type span:nth-of-type(-n + 3),
+.cat_5 #risk-nav > div:last-of-type span:nth-of-type(-n + 4) {
   background-color: #3c8dbc;
+}
+
+ {
+  background-color: #3c8dbc;
+}
+
+
+.cat_1 #kind,
+.cat_2 #ouders,
+.cat_3 #vader,
+.cat_4 #moeder,
+.cat_5 #overig,
+.cat_1 #risk-nav > div:first-of-type {
+  left: 0;
+}
+
+.cat_1 #ouders,
+.cat_2 #vader,
+.cat_3 #moeder,
+.cat_4 #overig {
+  left: 100%;
+}
+.cat_1 #vader,
+.cat_2 #moeder,
+.cat_3 #overig {
+  left: 200%;
+}
+.cat_1 #moeder,
+.cat_2 #overig {
+  left: 300%;
+}
+.cat_1 #overig {
+  left: 400%;
+}
+
+.cat_2 #kind,
+.cat_3 #ouders,
+.cat_4 #vader,
+.cat_5 #moeder,
+.cat_2 #risk-nav > div:first-of-type {
+  left: -100%;
+}
+
+.cat_3 #kind,
+.cat_4 #ouders,
+.cat_5 #vader,
+.cat_3 #risk-nav > div:first-of-type {
+  left: -200%;
+}
+
+.cat_4 #kind,
+.cat_5 #ouders,
+.cat_4 #risk-nav > div:first-of-type {
+  left: -300%;
+}
+
+.cat_5 #kind,
+.cat_5 #risk-nav > div:first-of-type {
+  left: -400%;
 }
