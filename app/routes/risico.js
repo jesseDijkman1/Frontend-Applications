@@ -400,7 +400,6 @@ export default Route.extend({
 
     // Sorteer de vragen op basis van de nieuwe categorieen
     vragen.forEach((vraag) => {
-      // const cats = ['kind','ouders','vader','moeder'];
       let words = vraag.vraag.toLowerCase().split(' ');
 
       if (words.includes('kind') || ['Geslacht', 'Soort onderwijs', 'Slachtoffer', 'Voortijdig schoolverlaten', 'Halt delict', 'Verandering onderwijs niveau', 'Actueel onderwijs niveau'].includes(vraag.vraag)) {

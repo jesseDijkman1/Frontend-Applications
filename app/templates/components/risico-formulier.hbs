@@ -1,20 +1,46 @@
-<div class="categorie" id="{{categorie}}">
+{{!-- <div class="categorie" id="{{categorie}}">
     {{#each object as |cat|}}
       <div class="vraag">
         <label for="{{cat.vraag}}">{{cat.vraag}}</label>
         <div class="">
           {{#if (check-input-type cat.antwoorden aantal=1)}}
-          <input type="checkbox" id="{{cat.vraag}}" name="_{{cat.vraag}}" value="{{cat.antwoorden.gewicht}}">
+          <input {{action "calcRisc" on="change"}} type="checkbox" id="{{cat.vraag}}" name="_{{cat.vraag}}" value="{{cat.antwoorden.gewicht}}">
           <p>{{cat.antwoorden.0.naam}}</p>
           {{else if (check-input-type cat.antwoorden aantal=2)}}
           {{#each cat.antwoorden as |antwoord|}}
-            <input type="radio" id="{{cat.vraag}}" name="_{{cat.vraag}}" value="{{antwoord.gewicht}}">
+            <input {{action "calcRisc" on="change"}} type="radio" id="{{cat.vraag}}" name="_{{cat.vraag}}" value="{{antwoord.gewicht}}">
             <p>{{antwoord.naam}}</p>
           {{/each}}
           {{else}}
           <select class="" id="{{cat.vraag}}" name="_{{cat.vraag}}">
             {{#each cat.antwoorden as |antwoord|}}
               <option value="{{antwoord.gewicht}}">{{antwoord.naam}}</option>
+            {{/each}}
+          </select>
+          {{/if}}
+        </div>
+      </div>
+    {{/each}}
+</div>
+{{yield}} --}}
+
+<div class="categorie" id={{categorie}}>
+    {{#each object as |cat|}}
+      <div class="vraag">
+        <label for={{cat.vraag}}>{{cat.vraag}}</label>
+        <div class="">
+          {{#if (check-input-type cat.antwoorden aantal=1)}}
+          <input onchange={{action "storeValue"}} type="checkbox" id={{cat.vraag}} class="question" name={{cat.vraag}} value={{cat.antwoorden.gewicht}}>
+          <p>{{cat.antwoorden.0.naam}}</p>
+          {{else if (check-input-type cat.antwoorden aantal=2)}}
+          {{#each cat.antwoorden as |antwoord|}}
+            <input onchange={{action "storeValue"}} type="radio" id={{cat.vraag}} class="question" name={{cat.vraag}} value={{antwoord.gewicht}}>
+            <p>{{antwoord.naam}}</p>
+          {{/each}}
+          {{else}}
+          <select onchange={{action "storeValue"}} class="question" id={{cat.vraag}} name={{cat.vraag}}>
+            {{#each cat.antwoorden as |antwoord|}}
+              <option value={{antwoord.gewicht}}>{{antwoord.naam}}</option>
             {{/each}}
           </select>
           {{/if}}

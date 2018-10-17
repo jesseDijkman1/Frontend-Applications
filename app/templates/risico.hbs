@@ -1,7 +1,7 @@
 <div id="risk" class="grid-wrapper cat_1">
   <aside>
     <section>
-      <h1>NR</h1>
+      <h1 id="risk-output">0</h1>
       <div id="color-indicator"></div>
     </section>
     <section>
@@ -43,6 +43,10 @@
   let risk = document.getElementById('risk');
   let next = document.getElementById('next');
   let back = document.getElementById('back');
+  let allInputs = document.querySelectorAll('.vraag .question');
+  let output = document.getElementById('risk-output');
+  let values = [];
+
   // Niet zo trots hierop ...
   next.addEventListener('click', () => {
     if (risk.classList.contains('cat_1')) {
@@ -75,5 +79,65 @@
       risk.classList.remove('cat_2');
     }
   })
+
+  function calcRisc() {
+    let lineup = [];
+    values.forEach((val) => {
+      lineup.push(val.gewicht);
+    })
+    let totaal = lineup.reduce((a, b) => a + b, 0);
+    let risico = Number( ( 1 / ( 1 + Math.exp( -1 * ( -8.57219 + totaal ) ) ) * 10000 ).toFixed(2));
+    let condition = Number(output.textContent) > risico;
+
+    // console.log(risico)
+    if (Number(output.textContent) !== risico) {
+      let newRisc = setInterval(() => {
+
+          if (condition === false) {
+            output.textContent = (Number(output.textContent) + 0.01).toFixed(2);
+          }
+
+          if (condition === true) {
+            output.textContent = (Number(output.textContent) - 0.01).toFixed(2);
+          }
+
+          if (Number(output.textContent) === risico) {
+            clearInterval(newRisc)
+          }
+      }, 1)
+    }
+  }
+
+  function fillArray(e) {
+    let name = e.target.name.replace(' ', '_');
+    let gewicht = Number(e.target.value);
+
+    if (values.length) {
+      values.forEach((val) => {
+        let i = values.indexOf(val);
+        if (val.naam === name) {
+          values.splice(i, 1);
+          values.push({
+            naam: name,
+            gewicht: gewicht
+          })
+        } else if (i === values.length - 1 && val.naam !== name) {
+          values.push({
+            naam: name,
+            gewicht: gewicht
+          })
+        }
+      })
+    } else {
+      values.push({
+        naam: e.target.name.replace(' ', '_'),
+        gewicht: Number(e.target.value)
+      })
+    }
+    calcRisc();
+  }
+    allInputs.forEach((input) => {
+      input.addEventListener('change', fillArray);
+    })
 
 </script>

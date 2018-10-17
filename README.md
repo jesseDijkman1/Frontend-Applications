@@ -115,3 +115,6 @@ In de ochtend kwamen er 3 jeugdwerkers op bezoek om vragen te beantwoorden en wa
 - De date uit de JSON file omzetten naar inputs
 
 Ik heb de data kunnen omzetten en categoriseren in mijn eigen categorieen. Heb ook de vormgeving zo goed als af gemaakt. De gebruiker kan door de vragenlijst heen klikken met een aantal animaties.
+
+### Woensdag (17-10-18)
+**Doel:**
