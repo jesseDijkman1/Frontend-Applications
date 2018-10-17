@@ -341,7 +341,11 @@ export default Route.extend({
       }
     ]
 
-    // const rx = new RegExp('kind|ouders|vader|moeder'); Werkt niet
+    function commaToDot(val) {
+      val = val.replace(/,/g, '.');
+      return val;
+    }
+
 
     let categorieen = {
       kind: [],
@@ -353,24 +357,50 @@ export default Route.extend({
     let vragen = [];
     let checkCat = [];
 
-    for (let i = 0; i < data.length; i++) {
+    for (let i = 1; i < data.length; i++) {
       if (!checkCat.includes(data[i].Categorie)) {
         checkCat.push(data[i].Categorie)
         vragen.push({
           vraag: data[i].Categorie,
-          antwoorden: [data[i].Name]
+          antwoorden: [
+            {
+              naam: data[i].Name,
+              gewicht: commaToDot(data[i].Gewicht)
+            }
+          ]
         })
       } else {
         vragen.forEach((ans) => {
+          if (ans.antwoorden.length === 1) {
+            // Geef gebruikers de optie om vrouw te antwoorden
+            if (ans.vraag === 'Geslacht') {
+              ans.antwoorden.push({
+                naam: 'Vrouw',
+                gewicht: null
+              })
+            }
+            // Geef gebruikers de optie om nee te antwoorden
+            if (ans.antwoorden[0].naam === 'Ja') {
+              ans.antwoorden.push({
+                naam: 'Nee',
+                gewicht: null
+              })
+            }
+          }
+
           if (ans.vraag === data[i].Categorie) {
-            ans.antwoorden.push(data[i].Name);
+            ans.antwoorden.push({
+              naam: data[i].Name,
+              gewicht: commaToDot(data[i].Gewicht)
+            })
           }
         })
       }
     }
-    // return vragen;
+
+    // Sorteer de vragen op basis van de nieuwe categorieen
     vragen.forEach((vraag) => {
-      let cats = ['kind','ouders','vader','moeder'];
+      // const cats = ['kind','ouders','vader','moeder'];
       let words = vraag.vraag.toLowerCase().split(' ');
 
       if (words.includes('kind') || ['Geslacht', 'Soort onderwijs', 'Slachtoffer', 'Voortijdig schoolverlaten', 'Halt delict', 'Verandering onderwijs niveau', 'Actueel onderwijs niveau'].includes(vraag.vraag)) {
@@ -395,6 +425,7 @@ export default Route.extend({
       }
 
     })
+    // console.log(categorieen);
     return categorieen;
   }
 });
