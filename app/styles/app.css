@@ -6,6 +6,9 @@
 @import 'css/risk-legend.css';
 @import 'css/risk-completion.css';
 
+:root {
+  --shadow: 0px 11px 3px -8px rgba(0,0,0,0.35);;
+}
 * {
   margin: 0;
   padding: 0;
@@ -14,6 +17,7 @@
 
 html {
   font-family: system-ui, arial, sans-serif, serif;
+  background: var(--primary-color);
 }
 
 a {

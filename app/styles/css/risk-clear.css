@@ -8,10 +8,14 @@
   height: 100%;
   background-color: #222d32;
   font-size: 1.2rem;
-  color: #FFF;
+  color: rgba(255,255,255,.8);
+  border: none;
+  transition: background-color .15s ease-in-out;
+  box-shadow: var(--shadow);
 }
 
 #risk-clear button:hover {
-  background-color: red;
+  background-color: #bc443c;
   cursor: pointer;
+  color: rgba(255,255,255,1);
 }

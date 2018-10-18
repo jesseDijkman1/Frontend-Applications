@@ -28,6 +28,14 @@
 #risk-completion ul li h3 {
   width: 100%;
   margin-top: 1rem;
+  color: black;
+  /* font-weight: 700; */
+  opacity: .7
+}
+#risk-completion ul li p {
+  color: black;
+  font-weight: 700;
+  opacity: .6
 }
 
 #risk-completion ul li .indicator {

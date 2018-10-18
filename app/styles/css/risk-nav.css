@@ -7,6 +7,10 @@
   display: flex;
   justify-content: center;
   padding-bottom: 2rem;
+  -webkit-box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.22);
+-moz-box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.22);
+box-shadow: 2px 2px 1px 0px rgba(0,0,0,0.22);
+z-index: 1;
 }
 
 #risk-nav > div:first-of-type {
