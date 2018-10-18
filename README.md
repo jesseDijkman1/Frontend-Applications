@@ -14,7 +14,7 @@ De aanpassing die ik heb aangebracht zijn:
 - en meer ...
 
 ## Installation guide
-```cli npm install -g ember-cli```
+```linux npm install -g ember-cli```
 
 
 ## Proces
