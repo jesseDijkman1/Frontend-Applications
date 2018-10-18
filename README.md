@@ -1,5 +1,5 @@
 # Read Me - Risicotaxatie app
-#### Jesse Dijkman
+#### Student: Jesse Dijkman
 
 ## Concept
 Een verbeterde versie van de risico taxatie-app. Met als doel: 'Het verlagen van het aantal uit huis geplaatste kinderen te verlagen'.
@@ -12,6 +12,18 @@ De aanpassing die ik heb aangebracht zijn:
 - Het aangeven van hoeveel procent van een categorie is ingevuld,
 - Met localstorage ingevulde data behouden wanneer de gebruiker terugkomt,
 - en meer ...
+
+---
+
+## Installation guide
+
+Installing ember-cli
+```npm install -g ember-cli```
+
+Creating a new project
+```ember new ember-project```
+
+---
 
 ## Proces
 ### Maandag (8-10-18)
