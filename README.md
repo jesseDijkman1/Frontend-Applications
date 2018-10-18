@@ -1,5 +1,5 @@
 # Read Me - Risicotaxatie app
-#### Jesse Dijkman
+#### Student/developer: Jesse Dijkman
 
 ## Concept
 Een verbeterde versie van de risico taxatie-app. Met als doel: 'Het verlagen van het aantal uit huis geplaatste kinderen te verlagen'.
