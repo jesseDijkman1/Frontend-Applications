@@ -346,7 +346,6 @@ export default Route.extend({
       return val;
     }
 
-
     let categorieen = {
       risico: (localStorage.getItem('risico')) ? localStorage.getItem('risico') : 0,
       kind: [],
@@ -355,12 +354,16 @@ export default Route.extend({
       moeder: [],
       overig: []
     }
+
     let vragen = [];
     let checkCat = [];
 
     for (let i = 1; i < data.length; i++) {
+
       if (!checkCat.includes(data[i].Categorie)) {
+
         checkCat.push(data[i].Categorie)
+
         vragen.push({
           vraag: data[i].Categorie,
           antwoorden: [
@@ -370,9 +373,12 @@ export default Route.extend({
             }
           ]
         })
+
       } else {
         vragen.forEach((ans) => {
+
           if (ans.antwoorden.length === 1) {
+
             // Geef gebruikers de optie om vrouw te antwoorden
             if (ans.vraag === 'Geslacht') {
               ans.antwoorden.push({
@@ -406,27 +412,30 @@ export default Route.extend({
       if (words.includes('kind') || ['Geslacht', 'Soort onderwijs', 'Slachtoffer', 'Voortijdig schoolverlaten', 'Halt delict', 'Verandering onderwijs niveau', 'Actueel onderwijs niveau'].includes(vraag.vraag)) {
         categorieen.kind.push(vraag);
       }
+
       else if (words.includes('ouders') || vraag.vraag == 'Herkomst') {
         categorieen.ouders.push(vraag);
       }
+
       else if (words.includes('vader')) {
+
         if (words.includes('moeder')) {
           categorieen.ouders.push(vraag);
+
         } else {
           categorieen.vader.push(vraag);
         }
-
       }
+
       else if (words.includes('moeder')) {
         categorieen.moeder.push(vraag);
       }
+
       else {
         categorieen.overig.push(vraag);
       }
-
     })
-    // console.log(categorieen);
-    // categorieen.push(localStorage.getItem(''))
+
     return categorieen;
   }
 });

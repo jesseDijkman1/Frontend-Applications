@@ -1,0 +1,43 @@
+#risk-completion {
+  grid-row: 5 / 10;
+  background-color: rgba(255,255,255,.5);
+  /* padding: 3rem 1rem 3rem 1rem; */
+  padding: 1rem 1rem 2rem 1rem;
+  border-top: solid 2px rgba(0,0,0,.05);
+  border-bottom: solid 2px rgba(0,0,0,.05);
+}
+
+#risk-completion ul {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* justify-content:  */
+}
+
+#risk-completion ul li {
+  list-style-type: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 2px rgba(0,0,0,.05);
+  height: 100%;
+}
+
+#risk-completion ul li h3 {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+#risk-completion ul li .indicator {
+  width: 75%;
+  height: 1rem;
+  background-color: rgba(0,0,0,.2);
+}
+
+#risk-completion ul li .indicator span {
+  display: block;
+  height: 100%;
+  background-color: #3c8dbc;
+}

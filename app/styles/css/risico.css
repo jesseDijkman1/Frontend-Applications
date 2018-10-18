@@ -7,7 +7,6 @@
   grid-template-columns: 13rem repeat(4, 1fr) 13rem;
   grid-template-rows: 8rem auto 5rem;
   grid-template-rows: repeat(5, 1fr);
-  /* grid-row-gap: 2rem; */
 }
 
 #risk > aside {
@@ -28,40 +27,6 @@
   color: #FFF;
 }
 
-#risk-completion {
-  /* background-color: red; */
-  grid-row: 5 / 10;
-  padding: 1rem;
-}
-
-#risk-completion ul {
-  /* background-color: blue; */
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-#risk-completion ul li {
-  list-style-type: none;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: solid 2px rgba(0,0,0,.05);
-  height: 100%;
-}
-
-#risk-completion ul li .indicator {
-  width: 75%;
-  height: 1rem;
-  background-color: rgba(0,0,0,.2);
-}
-
-#risk-completion ul li .indicator span {
-  display: block;
-  height: 100%;
-  background-color: #3c8dbc;
-}
-
 #risk > aside > div:first-child h1 {
   font-size: 4rem;
   align-self: center;
@@ -74,136 +39,9 @@
   transform: scale(1.05);
 }
 
-#risk-legend {
-  grid-row: 3/5;
-  padding: 1rem;
-  border: solid 1px black;
-}
-
-#risk-legend ol li {
-  list-style-type: none;
-  font-weight: 600;
-  font-size: .9rem;
-  display: flex;
-  margin-bottom: 1rem;
-  padding-bottom: .2rem;
-  border-bottom: solid 1px lightgrey;
-  color: rgba(0,0,0,.7);
-}
-
-#risk-legend ol li::before {
-  content:'';
-  display: block;
-  height: 1.25rem;
-  width: 10%;
-  margin-right: .75rem;
-}
-
-#risk-legend ol li:nth-of-type(1)::before {
-  background-color: yellow;
-}
-#risk-legend ol li:nth-of-type(2)::before {
-  background-color: orange;
-}
-#risk-legend ol li:nth-of-type(3)::before {
-  background-color: red;
-}
-
-#risk-clear {
-  padding: 1rem;
-  grid-row: 10 / 11;
-}
-
-#risk-clear button {
-  width: 100%;
-  height: 100%;
-  background-color: #222d32;
-  font-size: 1.2rem;
-  color: #FFF;
-}
-
-#risk-clear button:hover {
-  background-color: red;
-  cursor: pointer;
-}
-
-
 #color-indicator {
   height: 20%;
   background-color: yellow;
-}
-
-
-
-#risk-nav {
-  grid-row: 1 / 2;
-  grid-column: 3 / 6;
-  background-color: #222d32;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  justify-content: center;
-  padding-bottom: 2rem;
-}
-
-#risk-nav > div:first-of-type {
-  display: grid;
-  border-left: solid 2px rgba(255,255,255,.2);
-  grid-template-columns: repeat(5, 100%);
-  height: 100%;
-  width: 100%;
-  transition: left .4s ease-in-out;
-  position: absolute;
-}
-
-#risk-nav > div:last-of-type {
-  width: 50%;
-  height: .5rem;
-  align-self: flex-end;
-  display: flex;
-  justify-content: space-between;
-}
-
-#risk-nav > div:last-of-type span {
-  width: calc(100% / 5 - .2rem);
-  height: 100%;
-  background-color: rgba(255,255,255,.5);
-  transition: background-color .3s ease;
-}
-
-#risk-nav > div:first-of-type h1 {
-  text-align: center;
-  margin-top: 2rem;
-  font-size: 2.5rem;
-  color: #FFF;
-}
-
-#risk-nav > button {
-  position: absolute;
-  background-color: #367fa9;
-  transition: background-color .2s ease;
-  color: #FFF;
-  border: none;
-
-  height: 100%;
-  padding: 1rem;
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-#next {
-  top: 0;
-  right: 0;
-}
-
-#back {
-  top: 0;
-  left: 0;
-}
-
-#risk-nav > button:hover {
-  cursor: pointer;
-  background: #3c8dbc;
 }
 
 #risk-forms {
@@ -262,21 +100,6 @@
 }
 #risk-forms .categorie .vraag p:last-of-type {
   border: none;
-}
-
-.cat_1 #risk-nav > div:last-of-type span:nth-of-type(1),
-.cat_2 #risk-nav > div:last-of-type span:nth-of-type(2),
-.cat_3 #risk-nav > div:last-of-type span:nth-of-type(3),
-.cat_4 #risk-nav > div:last-of-type span:nth-of-type(4),
-.cat_5 #risk-nav > div:last-of-type span:nth-of-type(5) {
-  background-color: #FFF;
-}
-
-.cat_2 #risk-nav > div:last-of-type span:nth-of-type(1),
-.cat_3 #risk-nav > div:last-of-type span:nth-of-type(-n + 2),
-.cat_4 #risk-nav > div:last-of-type span:nth-of-type(-n + 3),
-.cat_5 #risk-nav > div:last-of-type span:nth-of-type(-n + 4) {
-  background-color: #3c8dbc;
 }
 
 .cat_1 #kind,

@@ -1,6 +1,18 @@
 # Read Me - Risicotaxatie app
 #### Jesse Dijkman
 
+## Concept
+Een verbeterde versie van de risico taxatie-app. Met als doel: 'Het verlagen van het aantal uit huis geplaatste kinderen te verlagen'.
+
+De aanpassing die ik heb aangebracht zijn:
+- Nieuwe en minder categorieën (Kind, Ouders, Vader, Moeder, Overig),
+- Progressive disclosure (zodat het minder overweldigend is voor de jeugdzorgers),
+- Bij elke verandering in een input het risico updaten,
+- Het risico met kleur aangeven (en een getal),
+- Het aangeven van hoeveel procent van een categorie is ingevuld,
+- Met localstorage ingevulde data behouden wanneer de gebruiker terugkomt,
+- en meer ...
+
 ## Proces
 ### Maandag (8-10-18)
 Introductie, geen werk
@@ -88,11 +100,14 @@ Kyle Robinson Young
 
 Na het bekijken van de tutorials heb ik Ember-CLI geinstalleerd en ben ik een beetje gaan uitproberen met behulp van de (quick start)[https://guides.emberjs.com/release/getting-started/quick-start/].
 
+---
+
 ### Donderdag (11-10-18)
 **Doel:**
 - Ember uitproberen, het leren kennen.
 In het begin van de dag heb ik een (tutorial)[https://guides.emberjs.com/release/tutorial/ember-cli/] gevolgd/gemaakt. Na de tutorial ben ik ember een beetje gaan uitproberen met test projectjes.
 
+---
 
 ### Vrijdag (12-10-18)
 **Doel:**
@@ -103,6 +118,7 @@ In het begin van de dag heb ik een (tutorial)[https://guides.emberjs.com/release
 Heb in het begin het project aangemaakt (RisicoTaxatieApp), en daarna de kind veilig thuis website bekeken en aantekeningen gemaakt plus een paar schetjes (van de layout).
 Ben daarna begonnen met de html en css. Heb geprobeerd om javascript te gebruiken (DOM manipulatie), met weinig succes.
 
+---
 
 ### Maandag (15-10-18)
 **Doel:**
@@ -110,11 +126,27 @@ Ben daarna begonnen met de html en css. Heb geprobeerd om javascript te gebruike
 
 In de ochtend kwamen er 3 jeugdwerkers op bezoek om vragen te beantwoorden en wat te vertellen over hun werk. In de middag heb ik het JSON bestand verwerkt en in de avond heb ik de code geschreven om het te sorteren op vraag.
 
+---
+
 ### Dinsdag (16-10-18)
 **Doel:**
 - De date uit de JSON file omzetten naar inputs
 
 Ik heb de data kunnen omzetten en categoriseren in mijn eigen categorieen. Heb ook de vormgeving zo goed als af gemaakt. De gebruiker kan door de vragenlijst heen klikken met een aantal animaties.
 
+---
+
 ### Woensdag (17-10-18)
 **Doel:**
+- Het mogelijk maken om het risico te bereken door een input te klikken. En data opslaan in localStorage
+
+Ik heb bij elke input een onchange event gezet zodat wanneer een gebruiker iets verandert het risico ook verandert. Het was even een gedoe om te beslissen hoe ik het ging doen, via een controller, component, helper of plain javascript. Het is uiteindelijk plain javascript geworden.
+Heb ook een animatie gemaakt bij het bereken van het risico. Wanneer het risico verandert wordt er elke milliseconde 0.01 bij opgeteld of van afgetrokken.
+
+---
+
+### Donderdag (18-10-18)
+**Doel:**
+- Localstorage gebruiken om date op te slaan, en het in de template gebruiken zodat input al ingevuld zijn van de vorige keer. Ook een clear knop toevoegen en de kleur-indicator werkend maken.
+
+Alles hierboven is gelukt, plus ik heb ook de code toegevoegd die aangeeft hoeveel procent van een categorie is ingevuld zodat de gebruiker weet waar nog informatie mist.

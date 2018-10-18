@@ -1,0 +1,85 @@
+#risk-nav {
+  grid-row: 1 / 2;
+  grid-column: 3 / 6;
+  background-color: #222d32;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 2rem;
+}
+
+#risk-nav > div:first-of-type {
+  display: grid;
+  border-left: solid 2px rgba(255,255,255,.2);
+  grid-template-columns: repeat(5, 100%);
+  height: 100%;
+  width: 100%;
+  transition: left .4s ease-in-out;
+  position: absolute;
+}
+
+#risk-nav > div:last-of-type {
+  width: 50%;
+  height: .5rem;
+  align-self: flex-end;
+  display: flex;
+  justify-content: space-between;
+}
+
+#risk-nav > div:last-of-type span {
+  width: calc(100% / 5 - .2rem);
+  height: 100%;
+  background-color: rgba(255,255,255,.5);
+  transition: background-color .3s ease;
+}
+
+#risk-nav > div:first-of-type h1 {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 2.5rem;
+  color: #FFF;
+}
+
+#risk-nav > button {
+  position: absolute;
+  background-color: #367fa9;
+  transition: background-color .2s ease;
+  color: #FFF;
+  border: none;
+
+  height: 100%;
+  padding: 1rem;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+#next {
+  top: 0;
+  right: 0;
+}
+
+#back {
+  top: 0;
+  left: 0;
+}
+
+#risk-nav > button:hover {
+  cursor: pointer;
+  background: #3c8dbc;
+}
+
+.cat_1 #risk-nav > div:last-of-type span:nth-of-type(1),
+.cat_2 #risk-nav > div:last-of-type span:nth-of-type(2),
+.cat_3 #risk-nav > div:last-of-type span:nth-of-type(3),
+.cat_4 #risk-nav > div:last-of-type span:nth-of-type(4),
+.cat_5 #risk-nav > div:last-of-type span:nth-of-type(5) {
+  background-color: #FFF;
+}
+
+.cat_2 #risk-nav > div:last-of-type span:nth-of-type(1),
+.cat_3 #risk-nav > div:last-of-type span:nth-of-type(-n + 2),
+.cat_4 #risk-nav > div:last-of-type span:nth-of-type(-n + 3),
+.cat_5 #risk-nav > div:last-of-type span:nth-of-type(-n + 4) {
+  background-color: #3c8dbc;
+}

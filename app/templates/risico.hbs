@@ -1,6 +1,9 @@
 <div id="risk" class="grid-wrapper cat_1">
+
   <aside>
+
     {{risico-output risico=model.risico}}
+
     <section id="risk-legend">
       <ol>
         <li>Laag risico</li>
@@ -8,46 +11,27 @@
         <li>Hoog risico</li>
       </ol>
     </section>
+
     <section id="risk-completion">
       <ul>
-        {{cat-completion id="kind-completion"}}
-        {{cat-completion id="ouders-completion"}}
-        {{cat-completion id="vader-completion"}}
-        {{cat-completion id="moeder-completion"}}
-        {{cat-completion id="overig-completion"}}
+        {{cat-completion id="kind-completion" title="Kind"}}
+        {{cat-completion id="ouders-completion" title="Ouders"}}
+        {{cat-completion id="vader-completion" title="Vader"}}
+        {{cat-completion id="moeder-completion" title="Moeder"}}
+        {{cat-completion id="overig-completion" title="Overig"}}
       </ul>
     </section>
+
     <footer id="risk-clear">
       <button id="clear" type="button" name="button">Clear all</button>
     </footer>
+
   </aside>
-  <header id="risk-nav">
-    <div>
-      <h1>Kind</h1>
-      <h1>Ouders</h1>
-      <h1>Vader</h1>
-      <h1>Moeder</h1>
-      <h1>Overig</h1>
-    </div>
-    <div>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <button id="next" type="button" name="button">&#62;</button>
-    <button id="back" type="button" name="button">&#60;</button>
-  </header>
-  <div id="disabler">
-    <div id="loader_6" class="loader">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-  </div>
+
+  {{risk-form-nav id="risk-nav"}}
+
+  {{form-disabler id="disabler"}}
+
   <main id="risk-forms">
     {{risico-formulier object=model.kind categorie="kind"}}
     {{risico-formulier object=model.ouders categorie="ouders"}}
@@ -55,6 +39,7 @@
     {{risico-formulier object=model.moeder categorie="moeder"}}
     {{risico-formulier object=model.overig categorie="overig"}}
   </main>
+
 </div>
 
 <script type="text/javascript">
@@ -75,12 +60,15 @@
     if (risk.classList.contains('cat_1')) {
       risk.classList.add('cat_2');
       risk.classList.remove('cat_1');
+
     } else if (risk.classList.contains('cat_2')) {
       risk.classList.add('cat_3');
       risk.classList.remove('cat_2');
+
     } else if (risk.classList.contains('cat_3')) {
       risk.classList.add('cat_4');
       risk.classList.remove('cat_3');
+
     } else if (risk.classList.contains('cat_4')) {
       risk.classList.add('cat_5');
       risk.classList.remove('cat_4');
@@ -91,166 +79,161 @@
     if (risk.classList.contains('cat_5')) {
       risk.classList.add('cat_4');
       risk.classList.remove('cat_5');
+
     } else if (risk.classList.contains('cat_4')) {
       risk.classList.add('cat_3');
       risk.classList.remove('cat_4');
+
     } else if (risk.classList.contains('cat_3')) {
       risk.classList.add('cat_2');
       risk.classList.remove('cat_3');
+
     } else if (risk.classList.contains('cat_2')) {
       risk.classList.add('cat_1');
       risk.classList.remove('cat_2');
     }
   })
 
+  function displayStatus(data) {
+    if (data) {
+      let cats = Object.keys(data);
 
+      cats.forEach((cat) => {
+        let displayPercentage = document.querySelector(`#${cat}-completion .percentage`);
+        displayPercentage.textContent = `${data[cat].perc()}%`;
 
-function displayStatus(data) {
-  if (data) {
-    let cats = Object.keys(data);
+        let percentageIndicator = document.querySelector(`#${cat}-completion .indicator span`);
+        percentageIndicator.style.width = `${data[cat].perc()}%`;
 
-    cats.forEach((cat) => {
-      let displayPercentage = document.querySelector(`#${cat}-completion .percentage`);
-      displayPercentage.textContent = `${data[cat].perc()}%`;
+      })
+    } else {
+      document.querySelectorAll('#risk-completion ul li').forEach((li) => {
+        let displayPercentage = li.querySelector('.percentage');
+        displayPercentage.textContent = '0%';
 
-      let percentageIndicator = document.querySelector(`#${cat}-completion .indicator span`);
-      percentageIndicator.style.width = `${data[cat].perc()}%`;
+        let percentageIndicator = li.querySelector('.indicator > span');
+        percentageIndicator.style.width = '0%';
 
-    })
-  } else {
-    document.querySelectorAll('#risk-completion ul li').forEach((li) => {
-      let displayPercentage = li.querySelector('.percentage');
-      displayPercentage.textContent = '0%';
-
-      let percentageIndicator = li.querySelector('.indicator > span');
-      percentageIndicator.style.width = '0%';
-
-    })
-  }
-}
-
-function checkCompletion() {
-  // let totalQuestions = allQuestions.length;
-
-  // Should have used a constructor
-  let totalQuestions = {
-    kind: {
-      answered: [],
-      total: [],
-      perc: function() {
-        return (this.answered.length / this.total.length * 100).toFixed(0);
-      }
-    },
-    ouders: {
-      answered: [],
-      total: [],
-      perc: function() {
-        return (this.answered.length / this.total.length * 100).toFixed(0);
-      }
-    },
-    vader: {
-      answered: [],
-      total: [],
-      perc: function() {
-        return (this.answered.length / this.total.length * 100).toFixed(0);
-      }
-    },
-    moeder: {
-      answered: [],
-      total: [],
-      perc: function() {
-        return (this.answered.length / this.total.length * 100).toFixed(0);
-      }
-    },
-    overig: {
-      answered: [],
-      total: [],
-      perc: function() {
-        return (this.answered.length / this.total.length * 100).toFixed(0);
-      }
-    }
-  }
-  // let totalCheckedInputs = [];
-
-  allQuestions.forEach((question) => {
-
-    totalQuestions[question.classList[0]].total.push(question);
-
-    let inputs = question.getElementsByClassName('question');
-    // if (inputs[0].nodeName == 'SELECT' && inputs[0].value !== 'null') {
-    //   totalQuestions[question.classList[0]].answered.push(question)
-    // } else if (inputs[0].checked || inputs[1].checked) {
-    //   totalQuestions[question.classList[0]].answered.push(question)
-    // }
-
-    if (inputs[0].nodeName == 'SELECT') {
-      if (inputs[0].value !== 'null') {
-        totalQuestions[question.classList[0]].answered.push(question);
-      }
-    } else if (inputs.length == 2 && (inputs[0].checked || inputs[1].checked)) {
-      totalQuestions[question.classList[0]].answered.push(question);
-    } else if (inputs[0].checked) {
-      totalQuestions[question.classList[0]].answered.push(question);
-    }
-
-    // if (inputs[0].checked || inputs[1].checked || (inputs[0].nodeName == 'SELECT' && inputs[0].value !== 'null')) {
-    //
-    // }
-    // inputs.forEach((input) => {
-    //   console.log(input)
-    // })
-    // if (question.checked || (question.nodeName == 'SELECT' && question.value !== 'null')) {
-    //   console.log(input.classList)
-    //   totalCheckedInputs.push(input.name)
-    // }
-
-  })
-  // console.log(totalQuestions)
-  // completionPercentage.textContent = `${ ( totalAnswered.length / totalQuestions * 100 ).toFixed(0) }%`
-  displayStatus(totalQuestions)
-}
-
-// checkCompletion();
-
-// Save all the localstorage data in antwoorden
-(function(){
-  colorInd.style.backgroundColor = `rgba(255, ${255 - (((Number(output.textContent) * 10) / 2) ).toFixed(0)}, 0)`
-
-  allInputs.forEach((input) => {
-    if (input.checked || (input.nodeName == 'SELECT' && input.value !== 'null')) {
-      antwoorden.push({
-        naam: input.name.replace(' ', '_'),
-        gewicht: Number(input.value)
       })
     }
-  })
-  calcRisc();
-})();
+  }
+
+  function checkCompletion() {
+
+  // Should have used a constructor
+    let totalQuestions = {
+      kind: {
+        answered: [],
+        total: [],
+        perc: function() {
+
+          return (this.answered.length / this.total.length * 100).toFixed(0);
+        }
+      },
+      ouders: {
+        answered: [],
+        total: [],
+        perc: function() {
+
+          return (this.answered.length / this.total.length * 100).toFixed(0);
+        }
+      },
+      vader: {
+        answered: [],
+        total: [],
+        perc: function() {
+
+          return (this.answered.length / this.total.length * 100).toFixed(0);
+        }
+      },
+      moeder: {
+        answered: [],
+        total: [],
+        perc: function() {
+
+          return (this.answered.length / this.total.length * 100).toFixed(0);
+        }
+      },
+      overig: {
+        answered: [],
+        total: [],
+        perc: function() {
+
+          return (this.answered.length / this.total.length * 100).toFixed(0);
+        }
+      }
+    }
+
+    allQuestions.forEach((question) => {
+
+      totalQuestions[question.classList[0]].total.push(question);
+
+      let inputs = question.getElementsByClassName('question');
+
+      if (inputs[0].nodeName == 'SELECT') {
+
+        if (inputs[0].value !== 'null') {
+          totalQuestions[question.classList[0]].answered.push(question);
+        }
+      } else if (inputs.length == 2 && (inputs[0].checked || inputs[1].checked)) {
+        totalQuestions[question.classList[0]].answered.push(question);
+
+      } else if (inputs[0].checked) {
+        totalQuestions[question.classList[0]].answered.push(question);
+      }
+    })
+
+    displayStatus(totalQuestions)
+  }
+
+  // Save all the localstorage data in antwoorden
+  (function(){
+
+    colorInd.style.backgroundColor = `rgba(255, ${255 - (((Number(output.textContent) * 10) / 2) ).toFixed(0)}, 0)`
+
+    allInputs.forEach((input) => {
+
+      if (input.checked || (input.nodeName == 'SELECT' && input.value !== 'null')) {
+
+        antwoorden.push({
+          naam: input.name.replace(' ', '_'),
+          gewicht: Number(input.value)
+        })
+      }
+    })
+
+    calcRisc();
+  })();
 
   function calcRisc() {
+
     checkCompletion();
+
     let lineup = [];
 
     disabler.classList.add('tempDisable');
 
     antwoorden.forEach((val) => {
+
       lineup.push(val.gewicht);
     })
+
     let totaal = lineup.reduce((a, b) => a + b, 0);
 
     // Calculate the risk
     let risico = Number( ( 1 / ( 1 + Math.exp( -1 * ( -8.57219 + totaal ) ) ) * 10000 ).toFixed(2));
+    let condition = Number(output.textContent) > risico;
 
     localStorage.setItem('risico', risico);
-    let condition = Number(output.textContent) > risico;
 
     if (Number(output.textContent) !== risico) {
 
       risk.classList.add('calculating')
 
       let newRisc = setInterval(() => {
+
           if (condition === false) {
-              output.textContent = (Number(output.textContent) + 0.01).toFixed(2);
+            output.textContent = (Number(output.textContent) + 0.01).toFixed(2);
           }
 
           if (condition === true) {
@@ -261,46 +244,58 @@ function checkCompletion() {
           colorInd.style.backgroundColor = `rgba(255, ${255 - (((Number(output.textContent) * 10) / 2) ).toFixed(0)}, 0)`
 
           if (Number(output.textContent) === risico) {
+
             clearInterval(newRisc)
-            // disabler.classList.remove('tempDisable');
+
             risk.classList.remove('calculating')
           }
 
       }, 0.1)
+
     } else {
-      // output.classList.remove('calculating')
-      // disabler.classList.remove('tempDisable');
       risk.classList.remove('calculating')
+
     }
   }
 
   function fillArray(e) {
+
     let name = e.target.name.replace(' ', '_');
     let gewicht = Number(e.target.value);
 
     if (antwoorden.length) {
+
       antwoorden.forEach((antwoord) => {
+
         let i = antwoorden.indexOf(antwoord);
+
         if (antwoord.naam === name) {
+
           antwoorden.splice(i, 1);
+
           antwoorden.push({
             naam: name,
             gewicht: gewicht
           })
+
           // Wacht tot the forEach loop bij de laatste is
         } else if (i === antwoorden.length - 1 && antwoord.naam !== name) {
+
           antwoorden.push({
             naam: name,
             gewicht: gewicht
           })
         }
       })
+
     } else {
+
       antwoorden.push({
         naam: e.target.name.replace(' ', '_'),
         gewicht: Number(e.target.value)
       })
     }
+
     calcRisc();
   }
     allInputs.forEach((input) => {
@@ -308,13 +303,21 @@ function checkCompletion() {
     })
 
     clear.addEventListener('click', () => {
+
       colorInd.style.backgroundColor = 'yellow'
+
       localStorage.clear();
+
       output.textContent = 0;
+
       antwoorden = [];
+
       displayStatus(null);
+
       allInputs.forEach((input) => {
+
           input.checked = false;
+
           if (input.nodeName == 'SELECT') {
             input.selectedIndex = 0;
           }
