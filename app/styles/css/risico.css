@@ -15,12 +15,12 @@
   grid-row: 1 / 6;
   grid-column: 2 / 3;
   display: grid;
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: repeat(10, 1fr);
 }
 
-#risk > aside > section:first-child {
+#risk > aside > div:first-child {
   background-color: #222d32;
-  grid-row: 1 / 2;
+  grid-row: 1 / 3;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -28,21 +28,59 @@
   color: #FFF;
 }
 
-#risk > aside > section:first-child h1 {
-  font-size: 4rem;
-  align-self: center;
-  width: 100%;
-}
-
-#risk > aside > section:last-child {
-  grid-row: 2/6;
+#risk-completion {
+  /* background-color: red; */
+  grid-row: 5 / 10;
   padding: 1rem;
 }
 
-#risk > aside > section:last-child ol {
+#risk-completion ul {
+  /* background-color: blue; */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
-#risk > aside > section:last-child ol li {
+#risk-completion ul li {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid 2px rgba(0,0,0,.05);
+  height: 100%;
+}
+
+#risk-completion ul li .indicator {
+  width: 75%;
+  height: 1rem;
+  background-color: rgba(0,0,0,.2);
+}
+
+#risk-completion ul li .indicator span {
+  display: block;
+  height: 100%;
+  background-color: #3c8dbc;
+}
+
+#risk > aside > div:first-child h1 {
+  font-size: 4rem;
+  align-self: center;
+  width: 100%;
+  transform: scale(1);
+  transition: transform .1s ease-out;
+}
+
+#risk.calculating > aside > div:first-child h1 {
+  transform: scale(1.05);
+}
+
+#risk-legend {
+  grid-row: 3/5;
+  padding: 1rem;
+  border: solid 1px black;
+}
+
+#risk-legend ol li {
   list-style-type: none;
   font-weight: 600;
   font-size: .9rem;
@@ -53,7 +91,7 @@
   color: rgba(0,0,0,.7);
 }
 
-#risk > aside > section:last-child ol li::before {
+#risk-legend ol li::before {
   content:'';
   display: block;
   height: 1.25rem;
@@ -61,14 +99,32 @@
   margin-right: .75rem;
 }
 
-#risk > aside > section:last-child ol li:nth-of-type(1)::before {
+#risk-legend ol li:nth-of-type(1)::before {
   background-color: yellow;
 }
-#risk > aside > section:last-child ol li:nth-of-type(2)::before {
+#risk-legend ol li:nth-of-type(2)::before {
   background-color: orange;
 }
-#risk > aside > section:last-child ol li:nth-of-type(3)::before {
+#risk-legend ol li:nth-of-type(3)::before {
   background-color: red;
+}
+
+#risk-clear {
+  padding: 1rem;
+  grid-row: 10 / 11;
+}
+
+#risk-clear button {
+  width: 100%;
+  height: 100%;
+  background-color: #222d32;
+  font-size: 1.2rem;
+  color: #FFF;
+}
+
+#risk-clear button:hover {
+  background-color: red;
+  cursor: pointer;
 }
 
 
@@ -76,6 +132,8 @@
   height: 20%;
   background-color: yellow;
 }
+
+
 
 #risk-nav {
   grid-row: 1 / 2;
@@ -283,7 +341,7 @@
   z-index: 100;
 }
 
-#disabler.tempDisable {
+#risk.calculating #disabler {
   display: flex;
   justify-content: center;
   align-items: center;

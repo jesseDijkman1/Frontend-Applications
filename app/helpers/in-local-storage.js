@@ -12,7 +12,7 @@ export function inLocalStorage(data) {
     ans = ans.split(' ').join('_')
   }
   let inStorage;
-  console.log(vraag, ans)
+
   if (localStorage.getItem(vraag) === ans) {
     inStorage = true;
   }

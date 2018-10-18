@@ -1,16 +1,25 @@
 <div id="risk" class="grid-wrapper cat_1">
   <aside>
-    <section>
-      <h1 id="risk-output">{{model.risc}}</h1>
-      <div id="color-indicator"></div>
-    </section>
-    <section>
+    {{risico-output risico=model.risico}}
+    <section id="risk-legend">
       <ol>
-        <li>... Laag risico</li>
-        <li>... Middelmatig risico</li>
-        <li>... Hoog risico</li>
+        <li>Laag risico</li>
+        <li>Middelmatig risico</li>
+        <li>Hoog risico</li>
       </ol>
     </section>
+    <section id="risk-completion">
+      <ul>
+        {{cat-completion id="kind-completion"}}
+        {{cat-completion id="ouders-completion"}}
+        {{cat-completion id="vader-completion"}}
+        {{cat-completion id="moeder-completion"}}
+        {{cat-completion id="overig-completion"}}
+      </ul>
+    </section>
+    <footer id="risk-clear">
+      <button id="clear" type="button" name="button">Clear all</button>
+    </footer>
   </aside>
   <header id="risk-nav">
     <div>
@@ -53,8 +62,12 @@
   let next = document.getElementById('next');
   let back = document.getElementById('back');
   let allInputs = document.querySelectorAll('.vraag .question');
+  let allQuestions = document.querySelectorAll('.vraag > div')
   let output = document.getElementById('risk-output');
   let disabler = document.getElementById('disabler');
+  let clearAll = document.getElementById('clear');
+  let colorInd = document.getElementById('color-indicator');
+  let completionPercentage = document.querySelector('#risk-completion > h2')
   let antwoorden = [];
 
   // Niet zo trots hierop ...
@@ -90,43 +103,174 @@
     }
   })
 
+
+
+function displayStatus(data) {
+  if (data) {
+    let cats = Object.keys(data);
+
+    cats.forEach((cat) => {
+      let displayPercentage = document.querySelector(`#${cat}-completion .percentage`);
+      displayPercentage.textContent = `${data[cat].perc()}%`;
+
+      let percentageIndicator = document.querySelector(`#${cat}-completion .indicator span`);
+      percentageIndicator.style.width = `${data[cat].perc()}%`;
+
+    })
+  } else {
+    document.querySelectorAll('#risk-completion ul li').forEach((li) => {
+      let displayPercentage = li.querySelector('.percentage');
+      displayPercentage.textContent = '0%';
+
+      let percentageIndicator = li.querySelector('.indicator > span');
+      percentageIndicator.style.width = '0%';
+
+    })
+  }
+}
+
+function checkCompletion() {
+  // let totalQuestions = allQuestions.length;
+
+  // Should have used a constructor
+  let totalQuestions = {
+    kind: {
+      answered: [],
+      total: [],
+      perc: function() {
+        return (this.answered.length / this.total.length * 100).toFixed(0);
+      }
+    },
+    ouders: {
+      answered: [],
+      total: [],
+      perc: function() {
+        return (this.answered.length / this.total.length * 100).toFixed(0);
+      }
+    },
+    vader: {
+      answered: [],
+      total: [],
+      perc: function() {
+        return (this.answered.length / this.total.length * 100).toFixed(0);
+      }
+    },
+    moeder: {
+      answered: [],
+      total: [],
+      perc: function() {
+        return (this.answered.length / this.total.length * 100).toFixed(0);
+      }
+    },
+    overig: {
+      answered: [],
+      total: [],
+      perc: function() {
+        return (this.answered.length / this.total.length * 100).toFixed(0);
+      }
+    }
+  }
+  // let totalCheckedInputs = [];
+
+  allQuestions.forEach((question) => {
+
+    totalQuestions[question.classList[0]].total.push(question);
+
+    let inputs = question.getElementsByClassName('question');
+    // if (inputs[0].nodeName == 'SELECT' && inputs[0].value !== 'null') {
+    //   totalQuestions[question.classList[0]].answered.push(question)
+    // } else if (inputs[0].checked || inputs[1].checked) {
+    //   totalQuestions[question.classList[0]].answered.push(question)
+    // }
+
+    if (inputs[0].nodeName == 'SELECT') {
+      if (inputs[0].value !== 'null') {
+        totalQuestions[question.classList[0]].answered.push(question);
+      }
+    } else if (inputs.length == 2 && (inputs[0].checked || inputs[1].checked)) {
+      totalQuestions[question.classList[0]].answered.push(question);
+    } else if (inputs[0].checked) {
+      totalQuestions[question.classList[0]].answered.push(question);
+    }
+
+    // if (inputs[0].checked || inputs[1].checked || (inputs[0].nodeName == 'SELECT' && inputs[0].value !== 'null')) {
+    //
+    // }
+    // inputs.forEach((input) => {
+    //   console.log(input)
+    // })
+    // if (question.checked || (question.nodeName == 'SELECT' && question.value !== 'null')) {
+    //   console.log(input.classList)
+    //   totalCheckedInputs.push(input.name)
+    // }
+
+  })
+  // console.log(totalQuestions)
+  // completionPercentage.textContent = `${ ( totalAnswered.length / totalQuestions * 100 ).toFixed(0) }%`
+  displayStatus(totalQuestions)
+}
+
+// checkCompletion();
+
+// Save all the localstorage data in antwoorden
+(function(){
+  colorInd.style.backgroundColor = `rgba(255, ${255 - (((Number(output.textContent) * 10) / 2) ).toFixed(0)}, 0)`
+
+  allInputs.forEach((input) => {
+    if (input.checked || (input.nodeName == 'SELECT' && input.value !== 'null')) {
+      antwoorden.push({
+        naam: input.name.replace(' ', '_'),
+        gewicht: Number(input.value)
+      })
+    }
+  })
+  calcRisc();
+})();
+
   function calcRisc() {
-    disabler.classList.add('tempDisable');
+    checkCompletion();
     let lineup = [];
+
+    disabler.classList.add('tempDisable');
+
     antwoorden.forEach((val) => {
       lineup.push(val.gewicht);
     })
     let totaal = lineup.reduce((a, b) => a + b, 0);
+
+    // Calculate the risk
     let risico = Number( ( 1 / ( 1 + Math.exp( -1 * ( -8.57219 + totaal ) ) ) * 10000 ).toFixed(2));
+
     localStorage.setItem('risico', risico);
-    // prevNew.push(risico);
     let condition = Number(output.textContent) > risico;
 
-
-    // if (prevNew.length > 2) {
-    //   prevNew.splice(0, 1);
-    // }
-    // let condition = (prevNew[0] > prevNew[1]);
-    // console.log(prevNew)
-    // console.log(risico)
     if (Number(output.textContent) !== risico) {
+
+      risk.classList.add('calculating')
+
       let newRisc = setInterval(() => {
           if (condition === false) {
-            output.textContent = (Number(output.textContent) + 0.01).toFixed(2);
+              output.textContent = (Number(output.textContent) + 0.01).toFixed(2);
           }
 
           if (condition === true) {
             output.textContent = (Number(output.textContent) - 0.01).toFixed(2);
           }
 
+          // Change color indicator based on the risc
+          colorInd.style.backgroundColor = `rgba(255, ${255 - (((Number(output.textContent) * 10) / 2) ).toFixed(0)}, 0)`
+
           if (Number(output.textContent) === risico) {
             clearInterval(newRisc)
-            disabler.classList.remove('tempDisable');
+            // disabler.classList.remove('tempDisable');
+            risk.classList.remove('calculating')
           }
 
-      }, 1)
+      }, 0.1)
     } else {
-      disabler.classList.remove('tempDisable');
+      // output.classList.remove('calculating')
+      // disabler.classList.remove('tempDisable');
+      risk.classList.remove('calculating')
     }
   }
 
@@ -162,5 +306,20 @@
     allInputs.forEach((input) => {
       input.addEventListener('change', fillArray);
     })
+
+    clear.addEventListener('click', () => {
+      colorInd.style.backgroundColor = 'yellow'
+      localStorage.clear();
+      output.textContent = 0;
+      antwoorden = [];
+      displayStatus(null);
+      allInputs.forEach((input) => {
+          input.checked = false;
+          if (input.nodeName == 'SELECT') {
+            input.selectedIndex = 0;
+          }
+
+      })
+    });
 
 </script>

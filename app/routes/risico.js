@@ -348,7 +348,7 @@ export default Route.extend({
 
 
     let categorieen = {
-      risc: localStorage.getItem('risico'),
+      risico: (localStorage.getItem('risico')) ? localStorage.getItem('risico') : 0,
       kind: [],
       ouders: [],
       vader: [],
