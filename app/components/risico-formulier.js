@@ -3,12 +3,17 @@ import Component from '@ember/component';
 export default Component.extend({
   actions: {
     storeValue(newVal) {
+      let vraag = newVal.target.name.split(' ').join('_');
+      let antwoord = newVal.target.dataset.vraag;
+      if (antwoord) {
+        antwoord = antwoord.split(' ').join('_');
+      }
 
-      let name = newVal.target.name;
-      name = name.replace(' ', '_');
-      let val = newVal.target.value;
+      if (!antwoord) {
+        antwoord = newVal.target.selectedOptions[0].dataset.vraag.split(' ').join('_');
+      }
 
-      localStorage.setItem(name, val);
+      localStorage.setItem(vraag, antwoord);
     }
   }
 });

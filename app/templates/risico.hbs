@@ -1,7 +1,7 @@
 <div id="risk" class="grid-wrapper cat_1">
   <aside>
     <section>
-      <h1 id="risk-output">0</h1>
+      <h1 id="risk-output">{{model.risc}}</h1>
       <div id="color-indicator"></div>
     </section>
     <section>
@@ -30,6 +30,15 @@
     <button id="next" type="button" name="button">&#62;</button>
     <button id="back" type="button" name="button">&#60;</button>
   </header>
+  <div id="disabler">
+    <div id="loader_6" class="loader">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
   <main id="risk-forms">
     {{risico-formulier object=model.kind categorie="kind"}}
     {{risico-formulier object=model.ouders categorie="ouders"}}
@@ -45,7 +54,8 @@
   let back = document.getElementById('back');
   let allInputs = document.querySelectorAll('.vraag .question');
   let output = document.getElementById('risk-output');
-  let values = [];
+  let disabler = document.getElementById('disabler');
+  let antwoorden = [];
 
   // Niet zo trots hierop ...
   next.addEventListener('click', () => {
@@ -81,18 +91,26 @@
   })
 
   function calcRisc() {
+    disabler.classList.add('tempDisable');
     let lineup = [];
-    values.forEach((val) => {
+    antwoorden.forEach((val) => {
       lineup.push(val.gewicht);
     })
     let totaal = lineup.reduce((a, b) => a + b, 0);
     let risico = Number( ( 1 / ( 1 + Math.exp( -1 * ( -8.57219 + totaal ) ) ) * 10000 ).toFixed(2));
+    localStorage.setItem('risico', risico);
+    // prevNew.push(risico);
     let condition = Number(output.textContent) > risico;
 
+
+    // if (prevNew.length > 2) {
+    //   prevNew.splice(0, 1);
+    // }
+    // let condition = (prevNew[0] > prevNew[1]);
+    // console.log(prevNew)
     // console.log(risico)
     if (Number(output.textContent) !== risico) {
       let newRisc = setInterval(() => {
-
           if (condition === false) {
             output.textContent = (Number(output.textContent) + 0.01).toFixed(2);
           }
@@ -103,8 +121,12 @@
 
           if (Number(output.textContent) === risico) {
             clearInterval(newRisc)
+            disabler.classList.remove('tempDisable');
           }
+
       }, 1)
+    } else {
+      disabler.classList.remove('tempDisable');
     }
   }
 
@@ -112,24 +134,25 @@
     let name = e.target.name.replace(' ', '_');
     let gewicht = Number(e.target.value);
 
-    if (values.length) {
-      values.forEach((val) => {
-        let i = values.indexOf(val);
-        if (val.naam === name) {
-          values.splice(i, 1);
-          values.push({
+    if (antwoorden.length) {
+      antwoorden.forEach((antwoord) => {
+        let i = antwoorden.indexOf(antwoord);
+        if (antwoord.naam === name) {
+          antwoorden.splice(i, 1);
+          antwoorden.push({
             naam: name,
             gewicht: gewicht
           })
-        } else if (i === values.length - 1 && val.naam !== name) {
-          values.push({
+          // Wacht tot the forEach loop bij de laatste is
+        } else if (i === antwoorden.length - 1 && antwoord.naam !== name) {
+          antwoorden.push({
             naam: name,
             gewicht: gewicht
           })
         }
       })
     } else {
-      values.push({
+      antwoorden.push({
         naam: e.target.name.replace(' ', '_'),
         gewicht: Number(e.target.value)
       })

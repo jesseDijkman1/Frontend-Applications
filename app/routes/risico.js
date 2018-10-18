@@ -348,6 +348,7 @@ export default Route.extend({
 
 
     let categorieen = {
+      risc: localStorage.getItem('risico'),
       kind: [],
       ouders: [],
       vader: [],
@@ -425,6 +426,7 @@ export default Route.extend({
 
     })
     // console.log(categorieen);
+    // categorieen.push(localStorage.getItem(''))
     return categorieen;
   }
 });

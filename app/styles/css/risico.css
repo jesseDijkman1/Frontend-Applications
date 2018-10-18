@@ -274,3 +274,32 @@
 .cat_5 #risk-nav > div:first-of-type {
   left: -400%;
 }
+
+/* Prevent user from clicking when risk is changing */
+#disabler {
+  display: none;
+  grid-row: 2 / 6;
+  grid-column: 3 / 6;
+  z-index: 100;
+}
+
+#disabler.tempDisable {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  animation-name: showOverlay;
+  animation-duration: .1s;
+  animation-timing-function: ease;
+  animation-fill-mode: forwards;
+}
+
+@keyframes showOverlay {
+  0% {
+    background-color: rgba(255,255,255,0);
+  }
+  100% {
+    background-color: rgba(255,255,255,.5);
+  }
+}
