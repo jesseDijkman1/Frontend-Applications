@@ -13,6 +13,10 @@ De aanpassing die ik heb aangebracht zijn:
 - Met localstorage ingevulde data behouden wanneer de gebruiker terugkomt,
 - en meer ...
 
+## Installation guide
+```npm npm install -g ember-cli```
+
+
 ## Proces
 ### Maandag (8-10-18)
 Introductie, geen werk
