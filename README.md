@@ -15,7 +15,8 @@ De aanpassing die ik heb aangebracht zijn:
 
 ---
 ## Result
-Heb een stap voor stap forumulier gemaakt waarmee het risico wordt berekend. 
+Het ontwerp waar we moesten werken: 
+![](https://imgur.com/d7qXvWJ)
 
 
 ## Installation guide
