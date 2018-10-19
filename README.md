@@ -200,3 +200,5 @@ Alles hierboven is gelukt, plus ik heb ook de code toegevoegd die aangeeft hoeve
 - https://www.youtube.com/watch?v=53OpEYA4zPQ&t=77s
 - https://www.youtube.com/watch?v=owDmPTSJkrg
 
+- Risico taxatie formule (javascript)
+  Daniël 1, Tim, Folkertjan
