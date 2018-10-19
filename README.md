@@ -14,6 +14,9 @@ De aanpassing die ik heb aangebracht zijn:
 - en meer ...
 
 ---
+## Result
+Heb een stap voor stap forumulier gemaakt waarmee het risico wordt berekend. 
+
 
 ## Installation guide
 
