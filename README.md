@@ -18,7 +18,7 @@ De aanpassing die ik heb aangebracht zijn:
 Het ontwerp waar we moesten werken: 
 ![Huidige Website van Arjan]([Imgur](https://i.imgur.com/d7qXvWJ.png))
 
-[Imgur](https://i.imgur.com/i8qT8AX.png)
+![Nieuw Ontwerp](https://i.imgur.com/i8qT8AX.png)
 
 Het nieuwe ontwerp: 
 ![Nieuwe ontwerp risicotaxatie]([Imgur](https://i.imgur.com/i8qT8AX.png))
