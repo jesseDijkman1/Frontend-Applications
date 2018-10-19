@@ -1,7 +1,7 @@
 # Read Me - Risicotaxatie app
 #### Student: Jesse Dijkman
 
-## Concept
+# Concept
 Een verbeterde versie van de risico taxatie-app. Met als doel: 'Het verlagen van het aantal uit huis geplaatste kinderen te verlagen'.
 
 De aanpassing die ik heb aangebracht zijn:
@@ -14,15 +14,15 @@ De aanpassing die ik heb aangebracht zijn:
 - en meer ...
 
 ---
-## Result
-Het ontwerp waar we moesten werken: 
+# Result
+**Het ontwerp waar we moesten werken:**
 ![Huidige Website van Arjan](https://i.imgur.com/d7qXvWJ.png)
 
-Het nieuwe ontwerp: 
+**Het nieuwe ontwerp:**
 ![Nieuw Ontwerp risicotaxatieapp](https://i.imgur.com/i8qT8AX.png)
 
 
-## Installation guide
+# Installation guide
 
 ### Ember Installation
 Installing ember-cli
@@ -31,15 +31,19 @@ Installing ember-cli
 Creating a new project
 ```ember new ember-project```
 
----
-
 ### Repo Installation
-``` git clone ```
-``` git cd ```
-``` npm install ```
+```
+git clone https://github.com/jesseDijkman1/Frontend-Applications.git
+```
+```
+git cd
+```
+```
+npm install
+```
 ---
 
-## Proces
+# Proces
 ### Maandag (8-10-18)
 Introductie, geen werk
 
@@ -176,3 +180,20 @@ Heb ook een animatie gemaakt bij het bereken van het risico. Wanneer het risico 
 - Localstorage gebruiken om date op te slaan, en het in de template gebruiken zodat input al ingevuld zijn van de vorige keer. Ook een clear knop toevoegen en de kleur-indicator werkend maken.
 
 Alles hierboven is gelukt, plus ik heb ook de code toegevoegd die aangeeft hoeveel procent van een categorie is ingevuld zodat de gebruiker weet waar nog informatie mist.
+
+
+# Bronnen
+- https://www.altexsoft.com/blog/engineering/the-good-and-the-bad-of-reactjs-and-react-native/
+- https://javascriptreport.com/the-ultimate-guide-to-javascript-frameworks/#aurelia
+- https://raygun.com/blog/popular-javascript-frameworks/
+- https://www.meteor.com/
+- https://www.quora.com/Can-you-tell-me-the-pros-cons-of-using-Meteor-to-develop-a-web-application
+- http://www.binariks.com/blog/tips/10-pros-cons-meteor-js-development/
+- https://www.quora.com/What-are-the-pros-and-cons-of-using-Polymer-for-front-end-development
+- http://www.olsondigital.com/blog/code/react-vs-polymer
+- https://hackernoon.com/5-best-javascript-frameworks-in-2017-7a63b3870282
+- https://www.emberjs.com/
+- https://guides.emberjs.com/release/getting-started/quick-start/
+- https://www.youtube.com/watch?v=53OpEYA4zPQ&t=77s
+- https://www.youtube.com/watch?v=owDmPTSJkrg
+
