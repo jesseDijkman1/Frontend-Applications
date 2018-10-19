@@ -24,12 +24,19 @@ Het nieuwe ontwerp:
 
 ## Installation guide
 
+### Ember Installation
 Installing ember-cli
 ```npm install -g ember-cli```
 
 Creating a new project
 ```ember new ember-project```
 
+---
+
+### Repo Installation
+``` git clone ```
+``` git cd ```
+``` npm install ```
 ---
 
 ## Proces
