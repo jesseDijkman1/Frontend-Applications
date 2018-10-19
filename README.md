@@ -32,12 +32,15 @@ Creating a new project
 ```ember new ember-project```
 
 ### Repo Installation
+Clone the repo
 ```
 git clone https://github.com/jesseDijkman1/Frontend-Applications.git
 ```
+Cd into the repo
 ```
 git cd
 ```
+Install the packages/app
 ```
 npm install
 ```
