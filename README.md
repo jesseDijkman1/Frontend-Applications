@@ -16,7 +16,7 @@ De aanpassing die ik heb aangebracht zijn:
 ---
 ## Result
 Het ontwerp waar we moesten werken: 
-![Huidige website](https://imgur.com/d7qXvWJ)
+![https://imgur.com/d7qXvWJ](https://imgur.com/d7qXvWJ)
 
 
 ## Installation guide
