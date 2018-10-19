@@ -16,7 +16,10 @@ De aanpassing die ik heb aangebracht zijn:
 ---
 ## Result
 Het ontwerp waar we moesten werken: 
-![https://imgur.com/d7qXvWJ](https://imgur.com/d7qXvWJ)
+![Huidige Website van Arjan]([Imgur](https://i.imgur.com/d7qXvWJ.png))
+
+Het nieuwe ontwerp: 
+![Nieuwe ontwerp risicotaxatie]([Imgur](https://i.imgur.com/i8qT8AX.png))
 
 
 ## Installation guide
