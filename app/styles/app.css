@@ -5,6 +5,7 @@
 @import 'css/risk-clear.css';
 @import 'css/risk-legend.css';
 @import 'css/risk-completion.css';
+@import 'css/over.css';
 
 :root {
   --shadow: 0px 11px 3px -8px rgba(0,0,0,0.35);;

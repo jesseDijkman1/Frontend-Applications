@@ -1,0 +1,28 @@
+#over-ons {
+  width: 100vw;
+  height: calc(100vh - 3rem);
+  padding: 2rem 0;
+  display: grid;
+  background-color: #f7f7f7;
+  grid-template-columns: 13rem repeat(4, 1fr) 13rem;
+  grid-template-rows: repeat(5, 1fr);
+}
+
+#over-ons main {
+  grid-column: 2 / 6;
+  grid-row: 1 / 5;
+  background-color: #e6e6e6;
+  padding: 3rem;
+  font-size: 20px;
+}
+
+#over-ons main h1 {
+  text-align: center;
+  color: #222d32;
+  margin-bottom: 2rem;
+}
+
+#over-ons main p {
+  line-height: 28px;
+  text-align: justify;
+}

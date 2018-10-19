@@ -105,6 +105,9 @@
         let percentageIndicator = document.querySelector(`#${cat}-completion .indicator span`);
         percentageIndicator.style.width = `${data[cat].perc()}%`;
 
+        if (percentageIndicator.style.width === '100%') {
+          percentageIndicator.style.backgroundColor = '#46bc3c'
+        }
       })
     } else {
       document.querySelectorAll('#risk-completion ul li').forEach((li) => {
@@ -113,6 +116,7 @@
 
         let percentageIndicator = li.querySelector('.indicator > span');
         percentageIndicator.style.width = '0%';
+        percentageIndicator.style.backgroundColor = '#3c8dbc'
 
       })
     }

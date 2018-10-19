@@ -49,11 +49,12 @@ z-index: 1;
 #color-indicator {
   height: 20%;
   background-color: yellow;
+  transition: background-color .2s ease;
   box-shadow: var(--shadow);
 }
 
 #risk-forms {
-  background-color: lightgrey;
+  background-color: #e6e6e6;
   grid-row: 2 / 6;
   grid-column: 3 / 6;
   overflow-y: scroll;
@@ -83,8 +84,14 @@ z-index: 1;
   padding: 1rem;
 }
 
+#risk-forms .categorie select {
+  height: 2rem;
+  width: 13rem;
+  outline: none;
+}
+
 #risk-forms .categorie .vraag:nth-of-type(even) {
-  background-color: rgba(0,0,0,.1);
+  background-color: rgba(0,0,0,.05);
 }
 
 #risk-forms .categorie .vraag div {

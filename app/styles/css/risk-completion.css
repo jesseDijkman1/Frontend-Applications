@@ -42,10 +42,18 @@
   width: 75%;
   height: 1rem;
   background-color: rgba(0,0,0,.2);
+  -webkit-box-shadow: inset 0px 0px 3px 1px rgba(0,0,0,0.1);
+-moz-box-shadow: inset 0px 0px 3px 1px rgba(0,0,0,0.1);
+box-shadow: inset 0px 0px 3px 1px rgba(0,0,0,0.1);
+overflow: hidden;
 }
 
 #risk-completion ul li .indicator span {
   display: block;
   height: 100%;
   background-color: #3c8dbc;
+  -webkit-box-shadow: 2px 0px 2px 0px rgba(0,0,0,0.37);
+-moz-box-shadow: 2px 0px 2px 0px rgba(0,0,0,0.37);
+box-shadow: 2px 0px 2px 0px rgba(0,0,0,0.37);
+  transition: width .2s ease-in-out, background-color .2s ease;
 }
